@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/19 14:12:53 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/20 17:01:51 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ int main(int argc, char **argv)
 {
 	if (argc == 5 || argc == 6)
 	{
+		t_data *data;
 		// 1.Parsing
+		data = parsing(argv);
+		if (!data)
+			error_usage(1);
 		// 2. La logique (a definir)
 	}
 	else
-	{
-		perror(RED"ERROR ! Invalid arguments !\n"END);
-		printf("Expected : ./pilo number_of_philosophers time_to_die");
-		printf("time_to_eat time_to_sleep");
-		printf("(number_of_times_each_philosopher_must_eat)\n");
-	}
+		error_usage(0);
 }

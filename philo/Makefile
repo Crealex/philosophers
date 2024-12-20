@@ -1,5 +1,5 @@
 NAME	=	philo
-SRCS	=	$(addprefix srcs/, test.c)
+SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing.c)
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 CC		=	gcc
 CFLAGS	=	-Werror -Wextra -Wall
@@ -37,8 +37,8 @@ ${OBJDIR}:
 	@mkdir -p ${OBJDIR}/srcs
 	@echo "${BOLD}${BLUE}📁 Created objects directory${END}"
 
-test: #${LIBFT}
-	${CC} srcs/pipex_utils.c srcs/split_pipex_aux.c srcs/ft_split_pipex.c srcs/test.c ${LIBFT}
+test:
+	${CC} srcs/test.c
 
 clean:
 	@echo "${BOLD}${YELLOW}🧹 Cleaning objects...${END}"
@@ -48,6 +48,7 @@ clean:
 fclean: clean
 	@echo "${BOLD}${YELLOW}🗑️  Deep cleaning...${END}"
 	@rm -f ${NAME}
+	@rm -f a.out
 	@echo "${BOLD}${GREEN}✨ All clean ✨${END}"
 
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/18 15:48:10 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/20 17:01:23 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,20 @@
 # define CYAN "\033[0;36m"
 # define BOLD "\033[1m"
 # define END "\033[0m"
+
+typedef struct s_data
+{
+	int nb_philo;
+	int	tdie;
+	int	teat;
+	int	tsleep;
+	int	many_eat;
+	int	id_philo;
+}	t_data;
+
+int ft_atoi(const char *str);
+t_data *parsing(char **argv);
+void	error_usage(int errnum);
+
 
 #endif
