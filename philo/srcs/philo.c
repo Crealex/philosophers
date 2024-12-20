@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/18 15:48:10 by atomasi          ###   ########.fr       */
+/*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
+/*   Updated: 2024/12/19 14:12:53 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
+#include "../includes/philo.h"
 
-# define PHILO_H
-
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/time.h>
-# include <pthread.h>
-
-// COLOR
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m"
-# define BLUE "\033[0;34m"
-# define PURPLE "\033[0;35m"
-# define CYAN "\033[0;36m"
-# define BOLD "\033[1m"
-# define END "\033[0m"
-
-#endif
+int main(int argc, char **argv)
+{
+	if (argc == 5 || argc == 6)
+	{
+		// 1.Parsing
+		// 2. La logique (a definir)
+	}
+	else
+	{
+		perror(RED"ERROR ! Invalid arguments !\n"END);
+		printf("Expected : ./pilo number_of_philosophers time_to_die");
+		printf("time_to_eat time_to_sleep");
+		printf("(number_of_times_each_philosopher_must_eat)\n");
+	}
+}
