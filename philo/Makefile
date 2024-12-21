@@ -1,5 +1,5 @@
 NAME	=	philo
-SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing.c)
+SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing.c testting_funct.c)
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 CC		=	gcc
 CFLAGS	=	-Werror -Wextra -Wall

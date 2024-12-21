@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/20 17:01:23 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/21 14:55:28 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 int ft_atoi(const char *str);
 t_data *parsing(char **argv);
 void	error_usage(int errnum);
+void	print_data(t_data *data);
 
 
 #endif

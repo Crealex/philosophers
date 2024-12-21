@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/20 17:01:51 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/21 14:55:41 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 		data = parsing(argv);
 		if (!data)
 			error_usage(1);
+		print_data(data);
 		// 2. La logique (a definir)
 	}
 	else

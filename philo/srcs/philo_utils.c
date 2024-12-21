@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/20 18:01:50 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/21 21:26:07 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ void	error_usage(int errnum)
 	if (errnum == 0)
 		write(2, RED"ERROR ! Only 4 or 5 arguments are accepted !\n"END, 57);
 	else if (errnum == 1)
-		write(2, RED"ERROR ! Only numbers are accepted !\n"END, 48);
+		write(2, RED"ERROR ! Only positives numbers are accepted !\n"END, 58);
 	printf("%sExpected : %s./philo number_of_philosophers time_to_die ", BOLD, END);
 	printf("time_to_eat time_to_sleep ");
 	printf("[number_of_times_each_philosopher_must_eat]\n");
 	exit(EXIT_FAILURE);
 }
+
+
