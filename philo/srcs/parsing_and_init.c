@@ -1,16 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_and_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/22 17:33:25 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 21:54:49 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	cp_utils_data_in_philos(t_data *data, t_philo *philo)
+{
+	philo->many_eat = data->many_eat;
+	philo->tdie = data->tdie;
+	philo->teat = data->teat;
+	philo->tsleep = data->tsleep;
+}
+
+int	philos_init(t_data *data)
+{
+	int i;
+
+	i = 0;
+	data->philos = malloc(sizeof(t_philo *) * data->nb_philo);
+	while (i < data->nb_philo)
+	{
+		data->philos[i] = malloc(sizeof(t_philo) * 1);
+		if (!data->philos[i])
+			return (free_philos(data, i), 0);
+		if (i == 0)
+			pthread_mutex_init(&data->philos[0]->is_dead, NULL);
+		else
+			data->philos[i]->is_dead = data->philos[0]->is_dead;
+		data->philos[i]->right_fork = malloc(sizeof(t_fork) * 1);
+		if (!data->philos[i]->right_fork)
+			return (free_philos(data, i), 0);
+		cp_utils_data_in_philos(data, data->philos[i]);
+		data->philos[i]->id = i + 1;
+		data->philos[i]->right_fork->id = i + 1;
+		pthread_mutex_init(&data->philos[i]->right_fork->mutex_status, NULL);
+		if (i > 0)
+			data->philos[i]->left_fork = data->philos[i - 1]->right_fork;
+		i++;
+	}
+	return (data->philos[0]->left_fork = data->philos[i - 1]->right_fork, 1);
+}
 
 int is_digit(char *res)
 {

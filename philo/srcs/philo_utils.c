@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/23 14:55:41 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/23 22:17:36 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,30 +53,27 @@ void	error_usage(int errnum)
 // 2 = eating
 // 3 = sleeping
 // 4 = thinking
-void	print_status(t_data *data, int status, int i)
+void	print_status(t_philo *philo, int status)
 {
 	struct timeval tv;
 	long time_ms;
 
 	//Juste pour faire des tests
-	status = 0;
-	i = 0;
-	data->philos[i]->id = 1;
 	gettimeofday(&tv, NULL);
 	time_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	if (status == 0)
 	{
-		printf(RED"%ld %d died\n"END, time_ms, data->philos[i]->id);
+		printf(RED"%ld %d died\n"END, time_ms, philo->id);
 		return ;
 	}
 	if (status == 1)
-		printf("%ld %d has taken a fork\n", time_ms,data->philos[i]->id);
+		printf("%ld %d has taken a fork\n", time_ms, philo->id);
 	else if (status == 2)
-		printf("%ld %d is eating\n", time_ms, data->philos[i]->id);
+		printf("%ld %d is eating\n", time_ms, philo->id);
 	else if (status == 3)
-		printf("%ld %d is sleeping\n", time_ms, data->philos[i]->id);
+		printf("%ld %d is sleeping\n", time_ms, philo->id);
 	else if (status == 4)
-		printf("%ld %d is thinking\n", time_ms, data->philos[i]->id);
+		printf("%ld %d is thinking\n", time_ms, philo->id);
 
 	printf("test du timestamp  en seconde: %ld\n", tv.tv_sec);
 	printf("test du timestamp  en useconde: %ld\n", tv.tv_usec);

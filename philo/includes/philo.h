@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/23 16:48:08 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/23 22:26:22 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ typedef struct s_philo
 	t_fork			*right_fork;
 	int				count_eat;
 	double			last_eat;
-	pthread_mutex_t	is_dead;
+	int				is_dead;
+	pthread_mutex_t mutex_dead;
+	int				tdie;
+	int				teat;
+	int				tsleep;
+	int				many_eat;
 }	t_philo;
 
 typedef struct s_data
@@ -59,8 +64,9 @@ typedef struct s_data
 
 int ft_atoi(const char *str);
 t_data *parsing(char **argv);
+int	philos_init(t_data *data);
 void	error_usage(int errnum);
-void	print_status(t_data *data, int ts, int i);
+void	print_status(t_philo *philo, int status);
 void	free_philos(t_data *data, int i);
 // testing
 void	print_data(t_data *data);
