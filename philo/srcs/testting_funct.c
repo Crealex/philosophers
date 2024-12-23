@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testting_funct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/23 10:41:07 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 14:32:15 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_philo_and_fork(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		printf(BOLD"philo %d\n"END, data->philos[i]->id);
+		printf(BOLD"i : %d philo %d\n"END, i, data->philos[i]->id);
 		printf("Fourchette gauche : %d\n", data->philos[i]->left_fork->id);
 		printf("Fourchette droite : %d\n", data->philos[i]->right_fork->id);
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/23 10:38:29 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 16:48:08 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ typedef struct s_fork
 {
 	int				id;
 	pthread_mutex_t	mutex_status;
-	int				left_acces; //pas sûr
-	int				right_right; // pas sûr
 }	t_fork;
 
 typedef struct s_philo
 {
-	int		id;
-	t_fork	*left_fork;
-	t_fork	*right_fork;
+	int				id;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
+	int				count_eat;
+	double			last_eat;
+	pthread_mutex_t	is_dead;
 }	t_philo;
 
 typedef struct s_data
@@ -53,7 +54,7 @@ typedef struct s_data
 	int	teat;
 	int	tsleep;
 	int	many_eat;
-	t_philo	*philos[];
+	t_philo	**philos;
 }	t_data;
 
 int ft_atoi(const char *str);
