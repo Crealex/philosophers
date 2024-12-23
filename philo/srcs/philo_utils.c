@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/22 17:31:08 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 09:48:27 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ void	print_status(t_data *data, int status, int i)
 	struct timeval tv;
 	long time_ms;
 
-	(void)data;
-	(void)status;
+	//Juste pour faire des tests
+	status = 0;
+	i = 0;
+	data->philos[i]->id = 1;
 	gettimeofday(&tv, NULL);
 	time_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	if (status == 0)

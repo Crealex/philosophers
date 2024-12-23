@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/21 21:26:29 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 10:41:07 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,18 @@ void	print_data(t_data *data)
 		printf("Ils doivent manger %s%d fois%s pour finir\n", CYAN, data->many_eat, END);
 	else
 		printf("Ils doivent manger a %sl'infini%s\n", CYAN, END);
+}
+
+void	print_philo_and_fork(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		printf(BOLD"philo %d\n"END, data->philos[i]->id);
+		printf("Fourchette gauche : %d\n", data->philos[i]->left_fork->id);
+		printf("Fourchette droite : %d\n", data->philos[i]->right_fork->id);
+		i++;
+	}
 }

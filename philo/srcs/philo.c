@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/22 18:45:39 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 10:47:19 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int main(int argc, char **argv)
 			error_usage(1);
 		philos_init(data);
 		print_data(data);
-		print_status(data, 0, 0);
+		//print_status(data, 0, 0);
+		print_philo_and_fork(data);
 		// 2. La logique (a definir)
 	}
 	else
