@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/23 10:47:19 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/23 11:32:41 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	philos_init(t_data *data)
 	int i;
 
 	i = 0;
-	while (i < data->nb_philo)
+	while (i <= data->nb_philo)
 	{
 		data->philos[i] = malloc(sizeof(t_philo) * 1);
 		if (!data->philos[i])
@@ -27,6 +27,7 @@ int	philos_init(t_data *data)
 		if (!data->philos[i]->right_fork)
 			return (free_philos(data, i), 0);
 		data->philos[i]->id = i + 1;
+		printf("")
 		data->philos[i]->right_fork->id = i + 1;
 		pthread_mutex_init(&data->philos[i]->right_fork->mutex_status, NULL);
 		if (i > 0)
