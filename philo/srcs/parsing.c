@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/20 18:08:36 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/22 17:33:25 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ t_data *parsing(char **argv)
 		data->many_eat = ft_atoi(argv[5]);
 	else
 		data->many_eat = -1; // a voir
-	data->id_philo = 0;
 	return (data);
 }

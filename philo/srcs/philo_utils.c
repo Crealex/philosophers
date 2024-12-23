@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/21 21:26:07 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/22 17:31:08 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,47 @@ void	error_usage(int errnum)
 	printf("[number_of_times_each_philosopher_must_eat]\n");
 	exit(EXIT_FAILURE);
 }
+// 0 = die
+// 1 = fork
+// 2 = eating
+// 3 = sleeping
+// 4 = thinking
+void	print_status(t_data *data, int status, int i)
+{
+	struct timeval tv;
+	long time_ms;
 
+	(void)data;
+	(void)status;
+	gettimeofday(&tv, NULL);
+	time_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	if (status == 0)
+	{
+		printf(RED"%ld %d died\n"END, time_ms, data->philos[i]->id);
+		return ;
+	}
+	if (status == 1)
+		printf("%ld %d has taken a fork\n", time_ms,data->philos[i]->id);
+	else if (status == 2)
+		printf("%ld %d is eating\n", time_ms, data->philos[i]->id);
+	else if (status == 3)
+		printf("%ld %d is sleeping\n", time_ms, data->philos[i]->id);
+	else if (status == 4)
+		printf("%ld %d is thinking\n", time_ms, data->philos[i]->id);
 
+	printf("test du timestamp  en seconde: %ld\n", tv.tv_sec);
+	printf("test du timestamp  en useconde: %ld\n", tv.tv_usec);
+	printf("test du timestamp  en miliseconde (format voulu): %ld\n", time_ms);
+}
+
+void	free_philos(t_data *data, int i)
+{
+	while (i >= 0)
+	{
+		if (data->philos[i]->right_fork)
+			free(data->philos[i]->right_fork);
+		if (data->philos[i])
+			free(data->philos[i]);
+		i--;
+	}
+}

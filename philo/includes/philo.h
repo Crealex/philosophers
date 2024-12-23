@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/21 14:55:28 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/22 17:39:46 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@
 # define BOLD "\033[1m"
 # define END "\033[0m"
 
+typedef struct s_fork
+{
+	int				id;
+	pthread_mutex_t	mutex_status;
+	int				left_acces; //pas sûr
+	int				right_right; // pas sûr
+}	t_fork;
+
+typedef struct s_philo
+{
+	int		id;
+	t_fork	*left_fork;
+	t_fork	*right_fork;
+}	t_philo;
+
 typedef struct s_data
 {
 	int nb_philo;
@@ -38,13 +53,16 @@ typedef struct s_data
 	int	teat;
 	int	tsleep;
 	int	many_eat;
-	int	id_philo;
+	t_philo	*philos[];
 }	t_data;
 
 int ft_atoi(const char *str);
 t_data *parsing(char **argv);
 void	error_usage(int errnum);
 void	print_data(t_data *data);
+void	print_status(t_data *data, int ts, int i);
+void	free_philos(t_data *data, int i);
+
 
 
 #endif
