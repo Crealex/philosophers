@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:00:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/23 22:19:54 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/25 14:52:09 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,9 @@ void	eating(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	print_status(philo, 4);
+}
+void	sleeping(t_philo *philo)
+{
+	print_status(philo, 3);
+	usleep(philo->tsleep * 1000);
 }

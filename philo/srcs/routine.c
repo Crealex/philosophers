@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/23 22:28:05 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/25 14:52:45 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	*routine(t_philo *philo)
 	while (philo->is_dead == 0)
 	{
 		//eating();// a continuer
+		//sleeping(); a continuer
 		//thinking(); p//areille
 	}
 }
