@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/23 22:17:36 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/28 19:05:49 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,14 @@ void	free_philos(t_data *data, int i)
 	}
 	if (data->philos)
 		free(data->philos);
+}
+
+int	check_death(t_philo *philo)
+{
+	if (philo->last_eat >= philo->tdie)
+	{
+		print_status(philo, 0);
+		return (0);
+	}
+	return (1);
 }
