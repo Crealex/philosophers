@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/23 22:28:36 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/29 19:43:16 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 			return (1);
 		if (!data)
 			error_usage(1);
+		// recuperatino du temps du debut
+		gettimeofday(data->start, NULL);
 		//2. Init les philos et forks
 		philos_init(data);
 		print_data(data);

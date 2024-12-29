@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/23 21:54:49 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/29 19:46:00 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	cp_utils_data_in_philos(t_data *data, t_philo *philo)
 	philo->tdie = data->tdie;
 	philo->teat = data->teat;
 	philo->tsleep = data->tsleep;
+	philo->start = data->start;
 }
 
 int	philos_init(t_data *data)

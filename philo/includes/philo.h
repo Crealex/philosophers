@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/28 22:08:14 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/29 19:53:58 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_philo
 	int				teat;
 	int				tsleep;
 	int				many_eat;
+	struct timeval	*start;
 }	t_philo;
 
 typedef struct s_data
@@ -59,6 +60,7 @@ typedef struct s_data
 	int	teat;
 	int	tsleep;
 	int	many_eat;
+	struct timeval *start;
 	t_philo	**philos;
 }	t_data;
 
@@ -68,6 +70,7 @@ int	philos_init(t_data *data);
 void	error_usage(int errnum);
 void	print_status(t_philo *philo, int status);
 void	free_philos(t_data *data, int i);
+long	get_time_diff(struct timeval *start);
 // testing
 void	print_data(t_data *data);
 void	print_philo_and_fork(t_data *data);
