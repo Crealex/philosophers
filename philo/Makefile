@@ -38,7 +38,7 @@ ${OBJDIR}:
 	@mkdir -p ${OBJDIR}/srcs
 	@echo "${BOLD}${BLUE}📁 Created objects directory${END}"
 
-test:
+test: ${TSRCS}
 	${CC} $(TSRCS) -o test
 
 clean:
@@ -49,7 +49,7 @@ clean:
 fclean: clean
 	@echo "${BOLD}${YELLOW}🗑️  Deep cleaning...${END}"
 	@rm -f ${NAME}
-	@rm -f a.out
+	@rm -f test
 	@echo "${BOLD}${GREEN}✨ All clean ✨${END}"
 
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 19:46:37 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/30 10:21:52 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 13:56:53 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ void	ft_usleep(long	msecs)
 	long	ref;
 	long	now;
 
-	ref = get_time_in_miliseconds;
+	ref = get_time_in_miliseconds();
+	printf(BLUE"test\n"END);
 	while ((now - ref) < msecs)
 	{
+		printf("diff : %ld\n", now - ref);
 		now = get_time_in_miliseconds();
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:13:33 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 11:32:17 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 13:33:31 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ int main()
 
 	delay = 500;
 	gettimeofday(start, NULL);
-	printf("test\n");
 	msecs = get_time_in_miliseconds();
-	printf("temps en seconde : %ld, temps en microsecondes : %d\n", start->tv_sec, start->tv_usec);
+	printf("test\n");
+	printf("temps en seconde : %ld, temps en microsecondes : %ld\n", start->tv_sec, start->tv_usec);
 	printf("temps en milisecondes : %ld\n", msecs);
 	printf("temps en milisecondes d'attente : %ld\n", delay);
 	ft_usleep(delay);
 	msecs = get_time_diff(start);
-	printf("temos entre le debut du programme et maintenant : %ld\n", msecs);
+	printf("temps entre le debut du programme et maintenant : %ld\n", msecs);
 	return (1);
 }

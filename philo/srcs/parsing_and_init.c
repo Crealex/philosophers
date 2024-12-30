@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/29 19:46:00 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/30 13:27:27 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	philos_init(t_data *data)
 		if (!data->philos[i])
 			return (free_philos(data, i), 0);
 		if (i == 0)
-			pthread_mutex_init(&data->philos[0]->is_dead, NULL);
+			pthread_mutex_init(&data->philos[0]->mutex_dead, NULL);
 		else
 			data->philos[i]->is_dead = data->philos[0]->is_dead;
 		data->philos[i]->right_fork = malloc(sizeof(t_fork) * 1);
