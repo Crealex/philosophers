@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:13:33 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/19 13:45:18 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 11:32:17 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	*thread_routine(void *data)
 	return (NULL);
 }
 
-int main()
+/*int main()
 {
 	pthread_t tid1;
 	pthread_t tid2;
@@ -85,4 +85,26 @@ int main()
 	else
 		printf("%sMain: OK. Le compte est de %u%s", GREEN, counter.count, END);
 	return (0);
+}*/
+
+//main de test
+
+int main()
+{
+	//test des fonction time_manager
+	struct timeval *start;
+	long			msecs;
+	long			delay;
+
+	delay = 500;
+	gettimeofday(start, NULL);
+	printf("test\n");
+	msecs = get_time_in_miliseconds();
+	printf("temps en seconde : %ld, temps en microsecondes : %d\n", start->tv_sec, start->tv_usec);
+	printf("temps en milisecondes : %ld\n", msecs);
+	printf("temps en milisecondes d'attente : %ld\n", delay);
+	ft_usleep(delay);
+	msecs = get_time_diff(start);
+	printf("temos entre le debut du programme et maintenant : %ld\n", msecs);
+	return (1);
 }

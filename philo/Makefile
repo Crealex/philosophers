@@ -1,5 +1,6 @@
 NAME	=	philo
-SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing_and_init.c testting_funct.c)
+SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing_and_init.c testting_funct.c time_manager.c)
+TSRCS	=	$(addprefix srcs/, test.c philo_utils.c parsing_and_init.c testting_funct.c time_manager.c)
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 CC		=	gcc
 CFLAGS	=	-Werror -Wextra -Wall
@@ -38,7 +39,7 @@ ${OBJDIR}:
 	@echo "${BOLD}${BLUE}📁 Created objects directory${END}"
 
 test:
-	${CC} srcs/test.c
+	${CC} $(TSRCS) -o test
 
 clean:
 	@echo "${BOLD}${YELLOW}🧹 Cleaning objects...${END}"
