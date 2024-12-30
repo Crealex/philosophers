@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:13:33 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 13:33:31 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/30 14:55:31 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,23 @@ void	*thread_routine(void *data)
 int main()
 {
 	//test des fonction time_manager
-	struct timeval *start;
-	long			msecs;
-	long			delay;
+	struct timeval start;
+	long long			msecs;
+	long long			delay;
 
-	delay = 500;
-	gettimeofday(start, NULL);
-	msecs = get_time_in_miliseconds();
+	delay = 3218;
+	gettimeofday(&start, NULL);
 	printf("test\n");
-	printf("temps en seconde : %ld, temps en microsecondes : %ld\n", start->tv_sec, start->tv_usec);
-	printf("temps en milisecondes : %ld\n", msecs);
-	printf("temps en milisecondes d'attente : %ld\n", delay);
+	msecs = get_time_in_miliseconds();
+	printf("temps en seconde : %ld, temps en microsecondes : %ld\n", start.tv_sec, start.tv_usec);
+	printf("temps en milisecondes : %lld\n", msecs);
+	printf("temps en milisecondes d'attente : %lld\n", delay);
 	ft_usleep(delay);
-	msecs = get_time_diff(start);
-	printf("temps entre le debut du programme et maintenant : %ld\n", msecs);
+	msecs = get_time_diff(&start);
+	printf("temps entre le debut du programme et maintenant : %lld\n", msecs);
+	printf("test de la vrai fonction usleep : \n");
+	usleep(3218000);
+	msecs = get_time_diff(&start);
+	printf("result : %lld\n", msecs);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 10:18:34 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 14:36:57 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	error_usage(int errnum);
 void	print_status(t_philo *philo, int status);
 void	free_philos(t_data *data, int i);
 //time_manager
-long	get_time_diff(struct timeval *start);
-long	get_time_in_miliseconds();
-void	ft_usleep(long	msecs);
+long long	get_time_diff(struct timeval *start);
+long long	get_time_in_miliseconds();
+void	ft_usleep(long long	msecs);
 // testing
 void	print_data(t_data *data);
 void	print_philo_and_fork(t_data *data);
