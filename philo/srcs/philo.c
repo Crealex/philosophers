@@ -6,13 +6,13 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/29 19:43:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/30 18:01:20 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int main(int argc, char **argv)
+int main(int argc, char **argv) // à tester / finir / modifier pour opti
 {
 	if (argc == 5 || argc == 6)
 	{

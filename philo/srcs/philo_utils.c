@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/28 19:05:49 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/30 18:01:03 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	print_status(t_philo *philo, int status)
 	printf("test du timestamp  en miliseconde (format voulu): %ld\n", time_ms);
 }
 
-void	free_philos(t_data *data, int i)
+void	free_philos(t_data *data, int i) // à tester
 {
 	while (i >= 0)
 	{
@@ -94,7 +94,7 @@ void	free_philos(t_data *data, int i)
 		free(data->philos);
 }
 
-int	check_death(t_philo *philo)
+int	check_death(t_philo *philo) // à tester
 {
 	if (philo->last_eat >= philo->tdie)
 	{

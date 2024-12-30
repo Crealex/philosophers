@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 17:21:46 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 18:24:56 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 	int				count_eat;
 	long long		last_eat;
 	int				is_dead;
+	int				finish_eat;
 	pthread_mutex_t mutex_dead;
 	int				tdie;
 	int				teat;
@@ -60,6 +61,7 @@ typedef struct s_data
 	int	teat;
 	int	tsleep;
 	int	many_eat;
+	int end;
 	struct timeval *start;
 	t_philo	**philos;
 }	t_data;
@@ -70,6 +72,11 @@ int	philos_init(t_data *data);
 void	error_usage(int errnum);
 void	print_status(t_philo *philo, int status);
 void	free_philos(t_data *data, int i);
+//action.c
+void	eating(t_philo *philo);
+void	thinking(t_philo *philo);
+void	sleeping(t_philo *philo);
+void	taking_fork(t_philo *philo);
 //time_manager
 long long	get_time_diff(struct timeval *start);
 long long	get_time_in_miliseconds();
