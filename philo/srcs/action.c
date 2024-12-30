@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 11:19:42 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/30 10:03:30 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 17:22:51 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	eating(t_philo *philo)
 {
 	print_status(philo, 2);
 	usleep(philo->teat * 1000);
+	philo->last_eat = get_time_in_miliseconds();
 	//reinitialiser le delai de mort
 }
 

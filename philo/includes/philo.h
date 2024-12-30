@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 14:36:57 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 17:21:46 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_philo
 	t_fork			*left_fork;
 	t_fork			*right_fork;
 	int				count_eat;
-	double			last_eat;
+	long long		last_eat;
 	int				is_dead;
 	pthread_mutex_t mutex_dead;
 	int				tdie;

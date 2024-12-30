@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/30 16:18:00 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/12/30 17:31:46 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int	check_eat(t_philo **philos)
 	i = 0;
 	while (i < philos[i]->id)
 	{
-		// checker si count_eat est egal ou superieur a many_eat
+		if (philos[i]->count_eat >= philos[i]->many_eat)
+			return (1);
+		i++;
 	}
+	return (0);
 }
 
 int	check_death(t_philo **philos)
@@ -30,8 +33,11 @@ int	check_death(t_philo **philos)
 	i = 0;
 	while (i < philos[i]->id)
 	{
-		// checker si le temps depuis le dernier repas et superieur ou egal a tdie
+		if (get_time_diff(philos[i]->last_eat) >= philos[i]->tdie)
+			return (1);
+		i++;
 	}
+	return (0);
 }
 
 void	*monitor(t_data *data)
