@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/30 18:25:42 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/31 10:56:28 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,35 @@ int	check_death(t_philo **philos) // à tester
 	return (0);
 }
 
-void	*monitor(t_data *data) // à tester
+void	*monitor(void *data_void) // à tester
 {
+	t_data *data;
+
+	data = (t_data *)data_void;
 	while (1)
 	{
 		if (check_death(data->philos))
-			return ;
+			return (NULL);
 		if (data->many_eat > -1)
 		{
 			if (check_eat(data->philos))
-				return ;
+				return (NULL);
 		}
 	}
 }
 
-void	*routine(t_philo *philo) // à tester
+void	*routine(void *data_void) // à tester
 {
+	t_philo	*philo;
+
+	philo = (t_philo *)data_void;
 	while (philo->is_dead == 0 && philo->finish_eat == 0)
 	{
-		taking_fork(philo); // a continuer
-		sleeping(philo); // a continuer
-		thinking(philo); //pareille
+		thinking(philo);
+		taking_fork(philo);
+		sleeping(philo);
 	}
+	return (NULL);
 }
 
 void	create_routine(t_data *data, pthread_t **tid) // à tester

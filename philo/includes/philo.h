@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 18:24:56 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/31 10:44:20 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_philo
 	t_fork			*left_fork;
 	t_fork			*right_fork;
 	int				count_eat;
-	long long		last_eat;
+	struct timeval	*last_eat;
 	int				is_dead;
 	int				finish_eat;
 	pthread_mutex_t mutex_dead;
@@ -84,6 +84,8 @@ void	ft_usleep(long long	msecs);
 // testing
 void	print_data(t_data *data);
 void	print_philo_and_fork(t_data *data);
+//routine.c
+void	create_routine(t_data *data, pthread_t **tid);
 
 
 

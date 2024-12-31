@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/30 18:01:03 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/12/31 10:38:15 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,22 @@ void	error_usage(int errnum)
 // 4 = thinking
 void	print_status(t_philo *philo, int status)
 {
-	struct timeval tv;
-	long time_ms;
+	long long time_ms;
 
-	//Juste pour faire des tests
-	gettimeofday(&tv, NULL);
-	time_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	time_ms = get_time_in_miliseconds();
 	if (status == 0)
 	{
-		printf(RED"%ld %d died\n"END, time_ms, philo->id);
+		printf(RED"%lld %d died\n"END, time_ms, philo->id);
 		return ;
 	}
 	if (status == 1)
-		printf("%ld %d has taken a fork\n", time_ms, philo->id);
+		printf("%lld %d has taken a fork\n", time_ms, philo->id);
 	else if (status == 2)
-		printf("%ld %d is eating\n", time_ms, philo->id);
+		printf("%lld %d is eating\n", time_ms, philo->id);
 	else if (status == 3)
-		printf("%ld %d is sleeping\n", time_ms, philo->id);
+		printf("%lld %d is sleeping\n", time_ms, philo->id);
 	else if (status == 4)
-		printf("%ld %d is thinking\n", time_ms, philo->id);
-
-	printf("test du timestamp  en seconde: %ld\n", tv.tv_sec);
-	printf("test du timestamp  en useconde: %ld\n", tv.tv_usec);
-	printf("test du timestamp  en miliseconde (format voulu): %ld\n", time_ms);
+		printf("%lld %d is thinking\n", time_ms, philo->id);
 }
 
 void	free_philos(t_data *data, int i) // à tester
@@ -92,14 +85,4 @@ void	free_philos(t_data *data, int i) // à tester
 	}
 	if (data->philos)
 		free(data->philos);
-}
-
-int	check_death(t_philo *philo) // à tester
-{
-	if (philo->last_eat >= philo->tdie)
-	{
-		print_status(philo, 0);
-		return (0);
-	}
-	return (1);
 }
