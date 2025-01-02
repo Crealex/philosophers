@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/31 10:56:28 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/02 20:37:56 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	check_eat(t_philo **philos) // à tester
 	int i;
 
 	i = 0;
-	while (i < philos[i]->id)
+	if (philos[i]->many_eat == -1)
+		return (0);
+	while (i < philos[i]->nb_philo)
 	{
 		if (philos[i]->count_eat >= philos[i]->many_eat)
 		{
@@ -34,7 +36,7 @@ int	check_death(t_philo **philos) // à tester
 	int i;
 
 	i = 0;
-	while (i < philos[i]->id)
+	while (i < philos[i]->nb_philo)
 	{
 		if (get_time_diff(philos[i]->last_eat) >= philos[i]->tdie)
 		{
@@ -88,5 +90,6 @@ void	create_routine(t_data *data, pthread_t **tid) // à tester
 	while (i < data->nb_philo)
 	{
 		pthread_create(tid[i], NULL, routine, &data->philos[i]);
+		i++;
 	}
 }
