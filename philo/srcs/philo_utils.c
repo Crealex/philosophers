@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2024/12/31 10:38:15 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/03 10:44:01 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_status(t_philo *philo, int status)
 {
 	long long time_ms;
 
-	time_ms = get_time_in_miliseconds();
+	time_ms = get_time_diff(philo->start);
 	if (status == 0)
 	{
 		printf(RED"%lld %d died\n"END, time_ms, philo->id);

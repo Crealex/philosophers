@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 11:19:42 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/31 10:44:57 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/03 13:24:06 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@ void	eating(t_philo *philo) // à tester
 {
 	print_status(philo, 2);
 	ft_usleep(philo->teat);
-	gettimeofday(philo->last_eat, NULL);
+	pthread_mutex_lock(&philo->mutex_eat_value);
+	if (gettimeofday(philo->last_eat, NULL) == -1)
+	{
+		pthread_mutex_unlock(&philo->mutex_eat_value);
+		return ;
+	}
+	philo->count_eat++;
+	pthread_mutex_unlock(&philo->mutex_eat_value);
 }
 
 void	taking_fork(t_philo *philo) // à finir / modifier

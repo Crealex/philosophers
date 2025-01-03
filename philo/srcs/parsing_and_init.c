@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_and_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/02 20:37:42 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/03 13:54:26 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ void	cp_utils_data_in_philos(t_data *data, t_philo *philo)
 	philo->nb_philo = data->nb_philo;
 }
 
+void	init_shared_variables_and_mutex(t_philo **philos, int i)
+{
+	if (i == 0)
+	{
+		pthread_mutex_init(&philos[i]->mutex_status_change, NULL);
+		philos[i]->is_dead = 0;
+	}
+	else
+	{
+		philos[i]->mutex_status_change = philos[0]->mutex_status_change;
+		philos[i]->is_dead = philos[0]->is_dead;
+	}
+	philos[i]->count_eat = 0;
+	philos[i]->finish_eat = 0;
+	pthread_mutex_init(&philos[i]->mutex_eat_value, NULL);
+}
+
 int	philos_init(t_data *data)
 {
 	int i;
@@ -33,10 +50,7 @@ int	philos_init(t_data *data)
 		data->philos[i] = malloc(sizeof(t_philo) * 1);
 		if (!data->philos[i])
 			return (free_philos(data, i), 0);
-		if (i == 0)
-			pthread_mutex_init(&data->philos[0]->mutex_dead, NULL);
-		else
-			data->philos[i]->is_dead = data->philos[0]->is_dead;
+		init_shared_variables_and_mutex(data->philos[0], i); // init touts les mutex ici.
 		data->philos[i]->right_fork = malloc(sizeof(t_fork) * 1);
 		if (!data->philos[i]->right_fork)
 			return (free_philos(data, i), 0);
