@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/03 13:38:20 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/03 21:40:44 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,15 @@
 # define BOLD "\033[1m"
 # define END "\033[0m"
 
-typedef struct s_fork
-{
-	int				id;
-	pthread_mutex_t	mutex_status;
-}	t_fork;
-
 typedef struct s_philo
 {
 	int				id;
-	t_fork			*left_fork; // enlever la struct pour juste laisser le mutex
-	t_fork			*right_fork; // pareille qui left_fork
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	right_fork;
 	int				count_eat;
 	struct timeval	*last_eat;
 	int				is_dead; //variable partagee par tout les philos.
 	int				finish_eat;
-	pthread_mutex_t mutex_dead; // a supprimer car remplacer par mutex_status_change
 	pthread_mutex_t	mutex_status_change;
 	pthread_mutex_t	mutex_eat_value;
 	int				tdie;
@@ -64,7 +57,6 @@ typedef struct s_data
 	int	teat;
 	int	tsleep;
 	int	many_eat;
-	int end;
 	struct timeval *start;
 	t_philo	**philos;
 }	t_data;
@@ -74,7 +66,7 @@ t_data *parsing(char **argv);
 int	philos_init(t_data *data);
 void	error_usage(int errnum);
 void	print_status(t_philo *philo, int status);
-void	free_philos(t_data *data, int i);
+void	free_philos(t_philo **philos, int i);
 //action.c
 void	eating(t_philo *philo);
 void	thinking(t_philo *philo);
@@ -89,6 +81,8 @@ void	print_data(t_data *data);
 void	print_philo_and_fork(t_data *data);
 //routine.c
 void	create_routine(t_data *data, pthread_t **tid);
+//exit.c
+void	finish_sim(t_data *data,t_philo **philos, t_philo *philo, int i);
 
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/03 10:44:01 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/03 21:39:47 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,16 @@ void	print_status(t_philo *philo, int status)
 		printf("%lld %d is thinking\n", time_ms, philo->id);
 }
 
-void	free_philos(t_data *data, int i) // à tester
+void	free_philos(t_philo **philos, int i) // à tester
 {
 	while (i >= 0)
 	{
-		if (data->philos[i]->right_fork)
-			free(data->philos[i]->right_fork);
-		if (data->philos[i])
-			free(data->philos[i]);
+		if (philos[i])
+			free(philos[i]);
 		i--;
 	}
-	if (data->philos)
-		free(data->philos);
+	if (philos)
+		free(philos);
 }
+
+

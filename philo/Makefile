@@ -1,5 +1,5 @@
 NAME	=	philo
-SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing_and_init.c time_manager.c routine.c action.c)
+SRCS	=	$(addprefix srcs/, philo.c philo_utils.c parsing_and_init.c time_manager.c routine.c action.c exit.c)
 TSRCS	=	$(addprefix srcs/, test.c philo_utils.c parsing_and_init.c testting_funct.c time_manager.c routine.c action.c)
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 CC		=	gcc

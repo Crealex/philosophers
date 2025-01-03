@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_and_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/03 13:54:26 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/03 21:41:11 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,11 @@ int	philos_init(t_data *data)
 	{
 		data->philos[i] = malloc(sizeof(t_philo) * 1);
 		if (!data->philos[i])
-			return (free_philos(data, i), 0);
-		init_shared_variables_and_mutex(data->philos[0], i); // init touts les mutex ici.
-		data->philos[i]->right_fork = malloc(sizeof(t_fork) * 1);
-		if (!data->philos[i]->right_fork)
-			return (free_philos(data, i), 0);
+			return (free_philos(data->philos, i), 0);
+		init_shared_variables_and_mutex(data->philos, i); // init touts les mutex ici.
 		cp_utils_data_in_philos(data, data->philos[i]);
 		data->philos[i]->id = i + 1;
-		data->philos[i]->right_fork->id = i + 1;
-		pthread_mutex_init(&data->philos[i]->right_fork->mutex_status, NULL);
+		pthread_mutex_init(&data->philos[i]->right_fork, NULL);
 		if (i > 0)
 			data->philos[i]->left_fork = data->philos[i - 1]->right_fork;
 		i++;
@@ -79,7 +75,7 @@ int is_digit(char *res)
 	return (1);
 }
 
-t_data *parsing(char **argv)
+t_data *parsing(char **argv) // peut-etre tout mettre direct dans philos ?
 {
 	int i;
 	t_data *data;

@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/30 18:01:44 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/03 21:10:04 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	print_philo_and_fork(t_data *data)
 	while (i < data->nb_philo)
 	{
 		printf(BLUE BOLD"i : %d philo %d\n"END, i, data->philos[i]->id);
-		printf("Fourchette gauche : %d\n", data->philos[i]->left_fork->id);
-		printf("Fourchette droite : %d\n", data->philos[i]->right_fork->id);
 		printf(BLUE"data dans philo : \n"END);
 		printf("many_eat : %d\n", data->philos[i]->many_eat);
 		printf("tdie : %d\n", data->philos[i]->tdie);
