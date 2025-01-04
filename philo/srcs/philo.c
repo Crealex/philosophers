@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/04 18:27:31 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 21:59:39 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	join_all_threads(pthread_t *tid, t_data *data)
 	}
 }
 
-int	 main(int argc, char **argv) // à tester / finir / modifier pour opti
+int	 main(int argc, char **argv)
 {
 	if (argc == 5 || argc == 6)
 	{

@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/04 18:25:22 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 21:50:53 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	print_one_philo(t_philo *philo)
 	printf("mutex_value_change : mutex\n");
 	printf("nb_philo : %d\n", philo->nb_philo);
 	printf("start : %ld\n", philo->start.tv_sec);
+	printf("----------------------------------------------\n");
 }

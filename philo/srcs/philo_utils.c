@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/03 21:39:47 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 21:42:55 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_status(t_philo *philo, int status)
 {
 	long long time_ms;
 
-	time_ms = get_time_diff(philo->start);
+	time_ms = get_time_diff(&philo->start);
 	if (status == 0)
 	{
 		printf(RED"%lld %d died\n"END, time_ms, philo->id);

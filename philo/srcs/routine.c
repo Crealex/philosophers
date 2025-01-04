@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/04 18:26:34 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 22:15:52 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	*monitor(void *data_void) // à tester
 			if (check_eat(data->philos))
 				return (NULL);
 		}
+		usleep(500);
 	}
 }
 
@@ -80,6 +81,7 @@ void	*routine(void *data_void) // à tester
 	t_philo	*philo;
 
 	philo = (t_philo *)data_void;
+	printf(RED"test\n"END);
 	pthread_mutex_lock(&philo->mutex_status_change);
 	while (philo->is_dead == 0 && philo->finish_eat == 0)
 	{
@@ -100,11 +102,15 @@ void	create_routine(t_data *data, pthread_t **tid) // à tester
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		//print_one_philo(data->philos[i]);
-		if (pthread_create(tid[i], NULL, routine, &data->philos[i]) == -1)
+		print_one_philo(data->philos[i]);
+		if (pthread_create(tid[i], NULL, routine, data->philos[i]) == -1) // qqch se passe entre le tid et la routine, des choses differentes se passe en relancant le pgramme plusieurs fois!
+		{
+
 			return ;
+		}
+		printf("tid %d : %ln\n", i, tid[i]);
 		i++;
 	}
-	if (pthread_create(tid[i], NULL, monitor, data) == -1)
+	if (pthread_create(tid[i], NULL, monitor, &data) == -1)
 		return ;
 }
