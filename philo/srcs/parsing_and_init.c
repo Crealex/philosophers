@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/03 21:41:11 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 18:25:57 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_shared_variables_and_mutex(t_philo **philos, int i)
 {
 	if (i == 0)
 	{
-		pthread_mutex_init(&philos[i]->mutex_status_change, NULL);
-		philos[i]->is_dead = 0;
+		pthread_mutex_init(&philos[0]->mutex_status_change, NULL);
+		philos[0]->is_dead = 0;
 	}
 	else
 	{
@@ -52,6 +52,7 @@ int	philos_init(t_data *data)
 			return (free_philos(data->philos, i), 0);
 		init_shared_variables_and_mutex(data->philos, i); // init touts les mutex ici.
 		cp_utils_data_in_philos(data, data->philos[i]);
+		gettimeofday(&data->philos[i]->last_eat, NULL);
 		data->philos[i]->id = i + 1;
 		pthread_mutex_init(&data->philos[i]->right_fork, NULL);
 		if (i > 0)

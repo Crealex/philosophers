@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/03 21:10:04 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 18:25:22 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,20 @@ void	print_philo_and_fork(t_data *data)
 		printf("tsleep : %d\n", data->philos[i]->tsleep);
 		i++;
 	}
+}
+
+void	print_one_philo(t_philo *philo)
+{
+	printf("count_eat : %d\n", philo->count_eat);
+	printf("finish_eat : %d\n", philo->finish_eat);
+	printf("id :  %d\n", philo->id);
+	printf("is_dead : %d\n", philo->is_dead);
+	printf("last_eat : %ld\n", philo->last_eat.tv_sec);
+	printf("left_fork : mutex\n");
+	printf("right_fork : mutex\n");
+	printf("many_eat : %d\n", philo->many_eat);
+	printf("mutex_eat_value : mutex\n");
+	printf("mutex_value_change : mutex\n");
+	printf("nb_philo : %d\n", philo->nb_philo);
+	printf("start : %ld\n", philo->start.tv_sec);
 }

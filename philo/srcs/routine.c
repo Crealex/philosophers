@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/03 14:00:01 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/04 18:26:34 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_death(t_philo **philos) // à tester
 	while (i < philos[i]->nb_philo)
 	{
 		pthread_mutex_lock(&philos[i]->mutex_eat_value);
-		if (get_time_diff(philos[i]->last_eat) >= philos[i]->tdie)
+		if (get_time_diff(&philos[i]->last_eat) >= philos[i]->tdie)
 		{
 			pthread_mutex_lock(&philos[i]->mutex_status_change);
 			philos[i]->is_dead = 1;
@@ -62,6 +62,7 @@ void	*monitor(void *data_void) // à tester
 	t_data *data;
 
 	data = (t_data *)data_void;
+	printf("test\n");
 	while (1)
 	{
 		if (check_death(data->philos))
@@ -97,10 +98,13 @@ void	create_routine(t_data *data, pthread_t **tid) // à tester
 	int i;
 
 	i = 0;
-	pthread_create(tid[i], NULL, monitor, data);
-	while (i < (data->nb_philo + 1))
+	while (i < data->nb_philo)
 	{
+		//print_one_philo(data->philos[i]);
+		if (pthread_create(tid[i], NULL, routine, &data->philos[i]) == -1)
+			return ;
 		i++;
-		pthread_create(tid[i], NULL, routine, &data->philos[i]);
 	}
+	if (pthread_create(tid[i], NULL, monitor, data) == -1)
+		return ;
 }

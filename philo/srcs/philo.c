@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/03 21:36:46 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/04 18:27:31 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	 main(int argc, char **argv) // à tester / finir / modifier pour opti
 		tid = malloc(sizeof(pthread_t) * data->nb_philo);
 		if (!tid)
 			return (1);
-		gettimeofday(data->start, NULL);
+		gettimeofday(&data->start, NULL);
 		philos_init(data);
 		create_routine(data, &tid);
 		join_all_threads(tid, data);
