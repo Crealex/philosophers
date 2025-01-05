@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/04 22:15:52 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/05 20:22:54 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*monitor(void *data_void) // à tester
 	t_data *data;
 
 	data = (t_data *)data_void;
-	printf("test\n");
+	printf(BLUE"test\n"END);
 	while (1)
 	{
 		if (check_death(data->philos))
