@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testting_funct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/04 21:50:53 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/06 16:37:51 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	print_one_philo(t_philo *philo)
 	printf("id :  %d\n", philo->id);
 	printf("is_dead : %d\n", philo->is_dead);
 	printf("last_eat : %ld\n", philo->last_eat.tv_sec);
-	printf("left_fork : mutex\n");
-	printf("right_fork : mutex\n");
+	printf("left_fork : %p\n", &philo->left_fork);
+	printf("right_fork : %p\n", &philo->right_fork);
 	printf("many_eat : %d\n", philo->many_eat);
-	printf("mutex_eat_value : mutex\n");
-	printf("mutex_value_change : mutex\n");
+	printf("mutex_eat_value : %p\n", &philo->mutex_eat_value);
+	printf("mutex_status_change : %p\n", &philo->mutex_status_change);
 	printf("nb_philo : %d\n", philo->nb_philo);
 	printf("start : %ld\n", philo->start.tv_sec);
 	printf("----------------------------------------------\n");

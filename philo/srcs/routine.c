@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/05 20:22:54 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/06 16:33:09 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	*routine(void *data_void) // à tester
 	philo = (t_philo *)data_void;
 	printf(RED"test\n"END);
 	pthread_mutex_lock(&philo->mutex_status_change);
+	print_one_philo(philo);
 	while (philo->is_dead == 0 && philo->finish_eat == 0)
 	{
 		pthread_mutex_unlock(&philo->mutex_status_change);
@@ -102,13 +103,13 @@ void	create_routine(t_data *data, pthread_t **tid) // à tester
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		print_one_philo(data->philos[i]);
+		//print_one_philo(data->philos[i]);
+		printf(RED"i : %d\n"END, i);
 		if (pthread_create(tid[i], NULL, routine, data->philos[i]) == -1) // qqch se passe entre le tid et la routine, des choses differentes se passe en relancant le pgramme plusieurs fois!
 		{
-
 			return ;
 		}
-		printf("tid %d : %ln\n", i, tid[i]);
+		printf("tid %d : %ld\n", i, *tid[i]);
 		i++;
 	}
 	if (pthread_create(tid[i], NULL, monitor, &data) == -1)

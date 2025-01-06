@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/04 21:59:39 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/06 14:22:20 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	 main(int argc, char **argv)
 		data = parsing(argv);
 		if (!data)
 			error_usage(1);
-		tid = malloc(sizeof(pthread_t) * data->nb_philo);
+		tid = malloc(sizeof(pthread_t) * (data->nb_philo + 1));
 		if (!tid)
 			return (1);
 		gettimeofday(&data->start, NULL);

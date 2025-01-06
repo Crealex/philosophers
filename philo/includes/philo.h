@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/04 18:23:30 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/06 16:49:34 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@
 typedef struct s_philo
 {
 	int				id;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	int				count_eat;
 	struct timeval	last_eat;
-	int				is_dead; //variable partagee par tout les philos.
+	int				*is_dead; //variable partagee par tout les philos.
 	int				finish_eat;
-	pthread_mutex_t	mutex_status_change;
+	pthread_mutex_t	*mutex_status_change;
 	pthread_mutex_t	mutex_eat_value;
 	int				tdie;
 	int				teat;
