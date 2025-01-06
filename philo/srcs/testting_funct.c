@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testting_funct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/06 16:37:51 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/06 21:01:08 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,7 @@ void	print_philo_and_fork(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		printf(BLUE BOLD"i : %d philo %d\n"END, i, data->philos[i]->id);
-		printf(BLUE"data dans philo : \n"END);
-		printf("many_eat : %d\n", data->philos[i]->many_eat);
-		printf("tdie : %d\n", data->philos[i]->tdie);
-		printf("teat : %d\n", data->philos[i]->teat);
-		printf("tsleep : %d\n", data->philos[i]->tsleep);
+		print_one_philo(data->philos[i]);
 		i++;
 	}
 }
@@ -47,7 +42,7 @@ void	print_one_philo(t_philo *philo)
 	printf("count_eat : %d\n", philo->count_eat);
 	printf("finish_eat : %d\n", philo->finish_eat);
 	printf("id :  %d\n", philo->id);
-	printf("is_dead : %d\n", philo->is_dead);
+	printf("is_dead : %d\n", *philo->is_dead);
 	printf("last_eat : %ld\n", philo->last_eat.tv_sec);
 	printf("left_fork : %p\n", &philo->left_fork);
 	printf("right_fork : %p\n", &philo->right_fork);
