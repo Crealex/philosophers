@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/06 21:01:50 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/07 10:01:10 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	 main(int argc, char **argv)
 		gettimeofday(&data->start, NULL);
 		philos_init(data);
 		printf("test main :\n");
-		print_philo_and_fork(data);
+		print_address(data->philos[0]);
+		//print_philo_and_fork(data);
 		create_routine(data, &tid);
 		join_all_threads(tid, data);
 		finish_sim(data, NULL, NULL, data->nb_philo);

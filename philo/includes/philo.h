@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/06 16:49:34 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/07 09:59:51 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_usleep(long long	msecs);
 void	print_data(t_data *data);
 void	print_philo_and_fork(t_data *data);
 void	print_one_philo(t_philo *philo);
+void	print_address(t_philo *philo);
 //routine.c
 void	create_routine(t_data *data, pthread_t **tid);
 //exit.c

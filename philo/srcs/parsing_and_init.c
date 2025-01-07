@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_and_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/06 21:10:20 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/07 10:06:35 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	init_shared_variables_and_mutex(t_philo **philos, int i)
 	else
 	{
 		philos[i]->mutex_status_change = philos[0]->mutex_status_change;
-		printf("adresse mutex status change : %p\n", philos[i]->mutex_status_change);
 		philos[i]->is_dead = philos[0]->is_dead;
 	}
 	philos[i]->count_eat = 0;
@@ -60,15 +59,13 @@ int	philos_init(t_data *data)
 		data->philos[i]->right_fork = malloc(sizeof(pthread_mutex_t));
 		pthread_mutex_init(data->philos[i]->right_fork, NULL);
 		if (i > 0)
-		{
 			data->philos[i]->left_fork = data->philos[i - 1]->right_fork;
-			printf("Philo %d - Adresse right_fork: %p, left_fork: %p\n",
-           i, (void*)data->philos[i]->right_fork,
-           (void*)data->philos[i]->left_fork);
-		}
+		printf("test philo init :\n");
+		if (i > 0)
+			print_address(data->philos[i]);
 		i++;
 	}
-	return (data->philos[0]->left_fork = data->philos[i - 1]->right_fork, 1);
+	return (data->philos[0]->left_fork = data->philos[i - 1]->right_fork, print_address(data->philos[0]), 1);
 }
 
 int is_digit(char *res)

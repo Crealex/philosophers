@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testting_funct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/06 21:01:08 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/07 09:59:34 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,14 @@ void	print_one_philo(t_philo *philo)
 	printf("nb_philo : %d\n", philo->nb_philo);
 	printf("start : %ld\n", philo->start.tv_sec);
 	printf("----------------------------------------------\n");
+}
+
+void	print_address(t_philo *philo)
+{
+	printf(BLUE"----------------------------------------\n"END);
+	printf(GREEN"Impression adresses du philo : %d\n"END, philo->id);
+	printf("adresse left fork : %p\n", philo->left_fork);
+	printf("adresse right fork : %p\n", philo->right_fork);
+	printf("adresse mutex status change : %p\n", philo->mutex_status_change);
+	printf(BLUE"----------------------------------------\n"END);
 }
