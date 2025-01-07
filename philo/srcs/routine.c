@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/07 11:22:22 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/07 14:59:24 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	*routine(void *data_void) // à tester
 	if (!philo || !philo->mutex_status_change || !philo->is_dead)
 	{
 		printf("Erreur: pointeur invalide pour philo %d\n", philo ? philo->id : -1);
-		return NULL;
+		return( NULL);
     }
 	printf("tentative de verrouillage du mutex pour le philo : %d\n", philo->id);
 	pthread_mutex_lock(philo->mutex_status_change);
