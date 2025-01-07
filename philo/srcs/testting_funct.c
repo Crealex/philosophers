@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testting_funct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:25:31 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/07 09:59:34 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/07 21:26:36 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	print_one_philo(t_philo *philo)
 	printf("mutex_status_change : %p\n", &philo->mutex_status_change);
 	printf("nb_philo : %d\n", philo->nb_philo);
 	printf("start : %ld\n", philo->start.tv_sec);
+	printf("tdie : %d\n", philo->tdie);
+	printf("teat : %d\n", philo->teat);
+	printf("tsleep : %d\n", philo->tsleep);
 	printf("----------------------------------------------\n");
 }
 

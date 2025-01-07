@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/07 09:59:51 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/07 21:03:02 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	print_philo_and_fork(t_data *data);
 void	print_one_philo(t_philo *philo);
 void	print_address(t_philo *philo);
 //routine.c
-void	create_routine(t_data *data, pthread_t **tid);
+void	create_routine(t_data *data, pthread_t *tid, pthread_t *tid_monitor);
 //exit.c
 void	finish_sim(t_data *data,t_philo **philos, t_philo *philo, int i);
 

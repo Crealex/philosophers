@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 19:46:37 by alexandre         #+#    #+#             */
-/*   Updated: 2024/12/30 14:46:14 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/07 21:29:40 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ long long	get_time_diff(struct timeval *start)
 {
 	long long diff_usec;
 	struct timeval now;
-
 	gettimeofday(&now, NULL);
 	diff_usec = (now.tv_sec - start->tv_sec) * 1000000 +
 			(now.tv_usec - start->tv_usec);
+	printf("\n\n\nfonction get_time_diff\n\n\n");
 	return (diff_usec / 1000);
 }
 
