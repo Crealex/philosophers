@@ -62,5 +62,5 @@ display_ascii:
 		cat ascii_art.txt; \
 	fi
 	@echo "$(END)"
-	@echo "${BOLD}${L_PURPLE} ✨Push_Swap✨ ${GREEN}is ready 🎉 ${END}"
+	@echo "${BOLD}${L_PURPLE} ✨Philo✨ ${GREEN}is ready 🎉 ${END}"
 	@echo "${BOLD}${BLUE}➜ Use ./${NAME} to run the program${END}"

@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/08 13:57:59 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 11:53:05 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ void	print_status(t_philo *philo, int status)
 		printf(RED BOLD"%lld %d died\n"END, time_ms, philo->id);
 		return ;
 	}
+	pthread_mutex_lock(philo->mutex_status_change);
+	if (*philo->is_dead == 1 || philo->finish_eat == 1)
+	{
+		pthread_mutex_unlock(philo->mutex_status_change);
+		return ;
+	}
+	pthread_mutex_unlock(philo->mutex_status_change);
 	if (status == 1)
 		printf(CYAN"%lld %d has taken a fork\n"END, time_ms, philo->id);
 	else if (status == 2)

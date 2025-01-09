@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 19:46:37 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/08 09:51:02 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 14:14:39 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_usleep(long long	msecs)
 	now = ref;
 	while ((now - ref) < msecs)
 	{
-		usleep(500);
+		usleep(50);
 		now = get_time_in_miliseconds();
 	}
 }

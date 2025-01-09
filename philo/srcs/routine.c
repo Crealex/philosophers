@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/08 17:15:40 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 15:43:57 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_death(t_philo **philos) // à tester
 	while (i < philos[0]->nb_philo)
 	{
 		pthread_mutex_lock(&philos[i]->mutex_eat_value);
-		if (get_time_diff(&philos[i]->last_eat) >= philos[i]->tdie) // !!!segfault ici!!! (sinon dans ce coin)
+		if (get_time_diff(&philos[i]->last_eat) > philos[i]->tdie)
 		{
 			pthread_mutex_unlock(&philos[i]->mutex_eat_value);
 			pthread_mutex_lock(philos[i]->mutex_status_change);
@@ -86,18 +86,9 @@ void	*routine(void *data_void)
 	while (*philo->is_dead == 0 && philo->finish_eat == 0)
 	{
 		pthread_mutex_unlock(philo->mutex_status_change);
-		pthread_mutex_lock(philo->mutex_status_change);
-		if (*philo->is_dead == 0 && philo->finish_eat == 0)
-			thinking(philo);
-		pthread_mutex_unlock(philo->mutex_status_change);
-		pthread_mutex_lock(philo->mutex_status_change);
-		if (*philo->is_dead == 0 && philo->finish_eat == 0)
-			taking_fork(philo);
-		pthread_mutex_unlock(philo->mutex_status_change);
-		pthread_mutex_lock(philo->mutex_status_change);
-		if (*philo->is_dead == 0 && philo->finish_eat == 0)
-			sleeping(philo);
-		pthread_mutex_unlock(philo->mutex_status_change);
+		thinking(philo);;
+		taking_fork(philo);
+		sleeping(philo);
 		pthread_mutex_lock(philo->mutex_status_change);
 	}
 	pthread_mutex_unlock(philo->mutex_status_change);
