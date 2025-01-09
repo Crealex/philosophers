@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/09 11:53:05 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:03:16 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	print_status(t_philo *philo, int status)
 		printf(YELLOW"%lld %d is thinking\n"END, time_ms, philo->id);
 }
 
-void	free_philos(t_philo **philos, int i) // à tester
+void	free_philos(t_philo **philos, int i)
 {
 	while (i >= 0)
 	{

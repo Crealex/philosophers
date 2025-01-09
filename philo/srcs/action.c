@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 11:19:42 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/09 15:38:50 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 19:14:38 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	taking_fork(t_philo *philo)
 		ft_usleep(5);
 	pthread_mutex_lock(philo->right_fork);
 	print_status(philo, 1);
+	if (philo->nb_philo == 1)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		ft_usleep(philo->tdie + 1);
+		return ;
+	}
 	pthread_mutex_lock(philo->left_fork);
 	print_status(philo, 1);
 	eating(philo);

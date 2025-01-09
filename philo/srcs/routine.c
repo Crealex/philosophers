@@ -3,31 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/09 15:43:57 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 21:59:16 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	check_eat(t_philo **philos) // à tester
+int	check_eat(t_philo **philos)
 {
 	int i;
+	int nb_finish_eat;
 
 	i = 0;
-	if (philos[i]->many_eat == -1)
-		return (0);
+	nb_finish_eat = 0;
 	while (i < philos[0]->nb_philo)
 	{
 		pthread_mutex_lock(&philos[i]->mutex_eat_value);
 		if (philos[i]->count_eat >= philos[i]->many_eat)
 		{
+			pthread_mutex_unlock(&philos[i]->mutex_eat_value);
 			pthread_mutex_lock(philos[i]->mutex_status_change);
 			philos[i]->finish_eat = 1;
 			pthread_mutex_unlock(philos[i]->mutex_status_change);
-			return (1);
+			while (philos[nb_finish_eat]->finish_eat == 1)
+				nb_finish_eat++;
+			if (nb_finish_eat == philos[0]->nb_philo)
+				return (1);
+			return (0);
 		}
 		pthread_mutex_unlock(&philos[i]->mutex_eat_value);
 		i++;
@@ -35,7 +40,7 @@ int	check_eat(t_philo **philos) // à tester
 	return (0);
 }
 
-int	check_death(t_philo **philos) // à tester
+int	check_death(t_philo **philos)
 {
 	int i;
 
@@ -58,20 +63,32 @@ int	check_death(t_philo **philos) // à tester
 	return (0);
 }
 
-void	*monitor(void *data_void) // à tester
+void	*monitor(void *data_void)
 {
-	t_philo **philos;
+	t_philo	**philos;
+	int		i;
 
 	philos = (t_philo **)data_void;
+	i = 0;
 	while (1)
 	{
-		if (check_death(philos))
-			return (NULL);
+		if (i == philos[0]->nb_philo) //pas sur
+			i = 0;
+		//printf("i : %d\n", i);
+		pthread_mutex_lock(philos[i]->mutex_status_change);
+		if (philos[i]->finish_eat == 0)
+		{
+			pthread_mutex_unlock(philos[i]->mutex_status_change);
+		 	if (check_death(philos))
+		 		return (NULL);
+		} // jusqy'a la (garder quand meme la fonction check death)
+		pthread_mutex_unlock(philos[i]->mutex_status_change);
 		if (philos[0]->many_eat > -1)
 		{
-			if (check_eat(philos))
+			if (check_eat(philos) == 1)
 				return (NULL);
 		}
+		i++;
 		usleep(50);
 	}
 }
@@ -86,7 +103,7 @@ void	*routine(void *data_void)
 	while (*philo->is_dead == 0 && philo->finish_eat == 0)
 	{
 		pthread_mutex_unlock(philo->mutex_status_change);
-		thinking(philo);;
+		thinking(philo);
 		taking_fork(philo);
 		sleeping(philo);
 		pthread_mutex_lock(philo->mutex_status_change);
@@ -95,7 +112,7 @@ void	*routine(void *data_void)
 	return (NULL);
 }
 
-void	create_routine(t_data *data, pthread_t *tid, pthread_t *tid_monitor) // à tester
+void	create_routine(t_data *data, pthread_t *tid, pthread_t *tid_monitor)
 {
 	int i;
 

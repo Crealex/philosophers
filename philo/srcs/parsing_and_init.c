@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_and_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/08 09:54:06 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:02:19 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	philos_init(t_data *data)
 		data->philos[i] = malloc(sizeof(t_philo) * 1);
 		if (!data->philos[i])
 			return (free_philos(data->philos, i), 0);
-		init_shared_variables_and_mutex(data->philos, i); // init touts les mutex ici.
+		init_shared_variables_and_mutex(data->philos, i);
 		cp_utils_data_in_philos(data, data->philos[i]);
 		gettimeofday(&data->philos[i]->last_eat, NULL);
 		data->philos[i]->id = i + 1;
