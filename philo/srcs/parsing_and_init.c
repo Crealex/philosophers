@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/07 10:06:35 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/08 09:54:06 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,9 @@ int	philos_init(t_data *data)
 		pthread_mutex_init(data->philos[i]->right_fork, NULL);
 		if (i > 0)
 			data->philos[i]->left_fork = data->philos[i - 1]->right_fork;
-		printf("test philo init :\n");
-		if (i > 0)
-			print_address(data->philos[i]);
 		i++;
 	}
-	return (data->philos[0]->left_fork = data->philos[i - 1]->right_fork, print_address(data->philos[0]), 1);
+	return (data->philos[0]->left_fork = data->philos[i - 1]->right_fork, 1);
 }
 
 int is_digit(char *res)
@@ -102,6 +99,6 @@ t_data *parsing(char **argv) // peut-etre tout mettre direct dans philos ?
 	if (argv[5])
 		data->many_eat = ft_atoi(argv[5]);
 	else
-		data->many_eat = -1; // a voir
+		data->many_eat = -1;
 	return (data);
 }

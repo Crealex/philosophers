@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/04 21:42:55 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/08 13:57:59 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ void	print_status(t_philo *philo, int status)
 	time_ms = get_time_diff(&philo->start);
 	if (status == 0)
 	{
-		printf(RED"%lld %d died\n"END, time_ms, philo->id);
+		printf(RED BOLD"%lld %d died\n"END, time_ms, philo->id);
 		return ;
 	}
 	if (status == 1)
-		printf("%lld %d has taken a fork\n", time_ms, philo->id);
+		printf(CYAN"%lld %d has taken a fork\n"END, time_ms, philo->id);
 	else if (status == 2)
-		printf("%lld %d is eating\n", time_ms, philo->id);
+		printf(GREEN"%lld %d is eating\n"END, time_ms, philo->id);
 	else if (status == 3)
-		printf("%lld %d is sleeping\n", time_ms, philo->id);
+		printf(PURPLE"%lld %d is sleeping\n"END, time_ms, philo->id);
 	else if (status == 4)
-		printf("%lld %d is thinking\n", time_ms, philo->id);
+		printf(YELLOW"%lld %d is thinking\n"END, time_ms, philo->id);
 }
 
 void	free_philos(t_philo **philos, int i) // à tester
