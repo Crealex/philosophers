@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_and_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:13:49 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/09 16:02:19 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/10 14:16:21 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ void	init_shared_variables_and_mutex(t_philo **philos, int i)
 		philos[i]->mutex_status_change = malloc(sizeof(pthread_mutex_t));
 		pthread_mutex_init(philos[0]->mutex_status_change, NULL);
 		philos[0]->is_dead = malloc(sizeof(int));
+		philos[0]->finish_all = malloc(sizeof(int));
 		*philos[0]->is_dead = 0;
+		*philos[0]->finish_all = 0;
 	}
 	else
 	{
 		philos[i]->mutex_status_change = philos[0]->mutex_status_change;
 		philos[i]->is_dead = philos[0]->is_dead;
+		philos[i]->finish_all = philos[0]->finish_all;
 	}
 	philos[i]->count_eat = 0;
 	philos[i]->finish_eat = 0;

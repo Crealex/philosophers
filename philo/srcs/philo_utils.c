@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/10 10:36:09 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/10 14:15:05 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	print_status(t_philo *philo, int status)
 		return ;
 	}
 	pthread_mutex_lock(philo->mutex_status_change);
-	if (*philo->is_dead == 1 || philo->finish_eat == 1)
+	if (*philo->is_dead == 1 || *philo->finish_all == 1)
 	{
 		pthread_mutex_unlock(philo->mutex_status_change);
 		return ;
