@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/07 21:03:02 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/10 11:50:18 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo
 	struct timeval	last_eat;
 	int				*is_dead; //variable partagee par tout les philos.
 	int				finish_eat;
+	int				*finish_all; // variable partage par tout les philos (a implementer dans le code)
 	pthread_mutex_t	*mutex_status_change;
 	pthread_mutex_t	mutex_eat_value;
 	int				tdie;

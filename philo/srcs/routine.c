@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/09 21:59:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/10 11:45:05 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@ int	check_eat(t_philo **philos)
 	int nb_finish_eat;
 
 	i = 0;
-	nb_finish_eat = 0;
 	while (i < philos[0]->nb_philo)
 	{
 		pthread_mutex_lock(&philos[i]->mutex_eat_value);
 		if (philos[i]->count_eat >= philos[i]->many_eat)
 		{
-			pthread_mutex_unlock(&philos[i]->mutex_eat_value);
+			nb_finish_eat = 0;
 			pthread_mutex_lock(philos[i]->mutex_status_change);
 			philos[i]->finish_eat = 1;
 			pthread_mutex_unlock(philos[i]->mutex_status_change);
 			while (philos[nb_finish_eat]->finish_eat == 1)
 				nb_finish_eat++;
 			if (nb_finish_eat == philos[0]->nb_philo)
+			{
+				pthread_mutex_unlock(&philos[i]->mutex_eat_value);
 				return (1);
-			return (0);
+			}
 		}
 		pthread_mutex_unlock(&philos[i]->mutex_eat_value);
 		i++;
@@ -66,29 +67,17 @@ int	check_death(t_philo **philos)
 void	*monitor(void *data_void)
 {
 	t_philo	**philos;
-	int		i;
 
 	philos = (t_philo **)data_void;
-	i = 0;
 	while (1)
 	{
-		if (i == philos[0]->nb_philo) //pas sur
-			i = 0;
-		//printf("i : %d\n", i);
-		pthread_mutex_lock(philos[i]->mutex_status_change);
-		if (philos[i]->finish_eat == 0)
-		{
-			pthread_mutex_unlock(philos[i]->mutex_status_change);
-		 	if (check_death(philos))
-		 		return (NULL);
-		} // jusqy'a la (garder quand meme la fonction check death)
-		pthread_mutex_unlock(philos[i]->mutex_status_change);
+		if (check_death(philos))
+				return (NULL);
 		if (philos[0]->many_eat > -1)
 		{
-			if (check_eat(philos) == 1)
+			if (check_eat(philos))
 				return (NULL);
 		}
-		i++;
 		usleep(50);
 	}
 }

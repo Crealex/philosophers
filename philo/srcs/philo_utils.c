@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:21:20 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/09 16:03:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/10 10:36:09 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	error_usage(int errnum)
 	printf("%sExpected : %s./philo number_of_philosophers time_to_die ", BOLD, END);
 	printf("time_to_eat time_to_sleep ");
 	printf("[number_of_times_each_philosopher_must_eat]\n");
-	exit(EXIT_FAILURE);
+	return ;
 }
 // 0 = die
 // 1 = fork

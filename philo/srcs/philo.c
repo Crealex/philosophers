@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:05:02 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/08 11:40:47 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/10 10:38:11 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	 main(int argc, char **argv)
 
 		data = parsing(argv);
 		if (!data)
+		{
 			error_usage(1);
+			return (1);
+		}
 		tid = malloc(sizeof(pthread_t) * (data->nb_philo + 1));
 		if (!tid)
 			return (1);
@@ -44,7 +47,7 @@ int	 main(int argc, char **argv)
 		create_routine(data, tid, &tid_monitor);
 		join_all_threads(tid, tid_monitor, data);
 		finish_sim(data, NULL, NULL, data->nb_philo - 1);
-		return (1);
+		return (0);
 	}
 	else
 		error_usage(0);
