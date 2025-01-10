@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/10 14:38:47 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:24:48 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_eat(t_philo **philos)
 			nb_finish_eat = 0;
 			pthread_mutex_lock(philos[i]->mutex_status_change);
 			philos[i]->finish_eat = 1;
-			while (nb_finish_eat < philos[0]->nb_philo && philos[nb_finish_eat]->finish_eat == 1);
+			while (nb_finish_eat < philos[0]->nb_philo && philos[nb_finish_eat]->finish_eat == 1)
 				nb_finish_eat++;
 			if (nb_finish_eat == philos[0]->nb_philo)
 			{
