@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:22:32 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/06 16:58:19 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/12 21:18:10 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	destroy_mutex(t_philo *philo)
 	pthread_mutex_destroy(&philo->mutex_eat_value);
 	pthread_mutex_destroy(philo->mutex_status_change);
 	pthread_mutex_destroy(philo->right_fork);
-	pthread_mutex_destroy(philo->left_fork);
 }
 
 void	finish_sim(t_data *data,t_philo **philos, t_philo *philo, int i)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:00:57 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/10 17:24:48 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/12 21:16:13 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,23 @@
 int	check_eat(t_philo **philos)
 {
 	int i;
-	int nb_finish_eat;
 
 	i = 0;
 	while (i < philos[0]->nb_philo)
 	{
 		pthread_mutex_lock(&philos[i]->mutex_eat_value);
-		if (philos[i]->count_eat >= philos[i]->many_eat)
+		if (philos[i]->count_eat < philos[0]->many_eat)
 		{
-			nb_finish_eat = 0;
-			pthread_mutex_lock(philos[i]->mutex_status_change);
-			philos[i]->finish_eat = 1;
-			while (nb_finish_eat < philos[0]->nb_philo && philos[nb_finish_eat]->finish_eat == 1)
-				nb_finish_eat++;
-			if (nb_finish_eat == philos[0]->nb_philo)
-			{
-				*philos[i]->finish_all = 1;
-				pthread_mutex_unlock(philos[i]->mutex_status_change);
-				pthread_mutex_unlock(&philos[i]->mutex_eat_value);
-				return (1);
-			}
-			pthread_mutex_unlock(philos[i]->mutex_status_change);
+			pthread_mutex_unlock(&philos[i]->mutex_eat_value);
+			return (0);
 		}
 		pthread_mutex_unlock(&philos[i]->mutex_eat_value);
 		i++;
 	}
-	return (0);
+	pthread_mutex_lock(philos[0]->mutex_status_change);
+	*philos[0]->finish_all = 1;
+	pthread_mutex_unlock(philos[0]->mutex_status_change);
+	return (1);
 }
 
 int	check_death(t_philo **philos)
@@ -114,7 +105,7 @@ void	create_routine(t_data *data, pthread_t *tid, pthread_t *tid_monitor)
 	{
 		if (pthread_create(&tid[i], NULL, routine, data->philos[i]) == -1)
 		{
-			printf("Erreur creation du thread %d\n", i);
+			printf("Error creating thread %d\n", i);
 			return ;
 		}
 		i++;
