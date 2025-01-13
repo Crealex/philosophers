@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:14:37 by atomasi           #+#    #+#             */
-/*   Updated: 2025/01/10 11:50:18 by atomasi          ###   ########.fr       */
+/*   Updated: 2025/01/13 10:54:24 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_philo
 	int				many_eat;
 	int				nb_philo;
 	struct timeval	start;
+	struct s_data	*data;
 }	t_philo;
 
 typedef struct s_data

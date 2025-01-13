@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:22:32 by alexandre         #+#    #+#             */
-/*   Updated: 2025/01/12 21:18:10 by alexandre        ###   ########.fr       */
+/*   Updated: 2025/01/13 11:48:11 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,13 @@ void	finish_sim(t_data *data,t_philo **philos, t_philo *philo, int i)
 {
 	if (data)
 	{
-		while (i >= 0)
-		{
-			destroy_mutex(data->philos[i]);
-			i--;
-		}
+		destroy_mutex(data->philos[i]);
 		free_philos(data->philos, i);
 		free(data);
 	}
 	else if (philos)
 	{
-		while (i >= 0)
-		{
-			destroy_mutex(philos[i]);
-			i--;
-		}
+		destroy_mutex(philos[i]);
 		free_philos(philos, i);
 	}
 	else if (philo)
